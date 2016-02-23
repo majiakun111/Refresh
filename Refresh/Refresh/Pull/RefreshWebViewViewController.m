@@ -8,6 +8,10 @@
 
 #import "RefreshWebViewViewController.h"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define TABBAR_HEIGHT 49.0
+
 @implementation RefreshWebViewViewController
 
 - (void)viewDidLoad
@@ -29,7 +33,7 @@
 
 - (UIScrollView *)createWebView
 {
-    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT)];
+    _webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT)];
     [_webView setBackgroundColor:[UIColor blueColor]];
     [_webView setDelegate:self];
     

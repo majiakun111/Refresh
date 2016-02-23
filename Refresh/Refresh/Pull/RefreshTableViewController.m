@@ -9,6 +9,10 @@
 #import "RefreshTableViewController.h"
 #import "UIView+Coordinate.h"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define TABBAR_HEIGHT 49.0
+
 @interface RefreshTableViewController ()
 
 
@@ -39,7 +43,7 @@
 
 - (UITableView *)createTableView
 {
-    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT) style:UITableViewStylePlain];
     [self.tableView setBackgroundColor:[UIColor clearColor]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
     [self.tableView setSeparatorColor:[UIColor redColor]];

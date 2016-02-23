@@ -8,6 +8,10 @@
 
 #import "RefreshCollectionViewController.h"
 
+#define SCREEN_WIDTH [[UIScreen mainScreen] bounds].size.width
+#define SCREEN_HEIGHT [[UIScreen mainScreen] bounds].size.height
+#define TABBAR_HEIGHT 49.0
+
 @implementation RefreshCollectionViewController
 
 - (void)viewDidLoad
@@ -36,7 +40,7 @@
     UICollectionViewFlowLayout *flowLayout=[[UICollectionViewFlowLayout alloc] init];
     [flowLayout setScrollDirection:UICollectionViewScrollDirectionVertical];
     
-    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT) collectionViewLayout:flowLayout];
+    _collectionView=[[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - TABBAR_HEIGHT) collectionViewLayout:flowLayout];
     [_collectionView setDataSource:self];
     [_collectionView setDelegate:self];
     [_collectionView setBackgroundColor:[UIColor clearColor]];

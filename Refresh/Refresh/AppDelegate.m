@@ -8,8 +8,8 @@
 
 #import "AppDelegate.h"
 #import "RefreshTableViewController.h"
-#import "RefreshWebViewViewController.h"
 #import "RefreshCollectionViewController.h"
+#import "RefreshWebViewViewController.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +22,22 @@
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    RefreshTableViewController *rootViewController = [[RefreshTableViewController alloc] init];
+    UITabBarItem *tableViewItem = [[UITabBarItem alloc] initWithTitle:@"Table" image:nil selectedImage:nil];
+    RefreshTableViewController *refreshTableViewController = [[RefreshTableViewController alloc] init];
+    refreshTableViewController.tabBarItem = tableViewItem;
+    
+    UITabBarItem *collectionViewItem = [[UITabBarItem alloc] initWithTitle:@"Collection" image:nil selectedImage:nil];
+    RefreshCollectionViewController *refreshCollectionViewController = [[RefreshCollectionViewController alloc] init];
+    refreshCollectionViewController.tabBarItem = collectionViewItem;
+    
+    UITabBarItem *webViewItem = [[UITabBarItem alloc] initWithTitle:@"WebView" image:nil selectedImage:nil];
+    RefreshWebViewViewController *refreshWebViewViewController = [[RefreshWebViewViewController alloc] init];
+    refreshWebViewViewController.tabBarItem = webViewItem;
+    
+    NSArray<UIViewController *> *viewControllers = @[refreshTableViewController, refreshCollectionViewController, refreshWebViewViewController];
+    
+    UITabBarController *rootViewController = [[UITabBarController alloc] init];
+    [rootViewController setViewControllers:viewControllers];
     self.window.rootViewController = rootViewController;
     
     [self.window makeKeyAndVisible];
