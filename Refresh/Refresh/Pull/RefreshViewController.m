@@ -53,7 +53,7 @@
 {
     _refreshing = YES;
     
-    [self.refreshHeaderView setState:EGOPullRefreshRefreshing];
+    [self.refreshHeaderView setState:PullRefreshRefreshing];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_TIME];
@@ -67,7 +67,7 @@
 {
     _refreshing = NO;
     
-    [self.refreshHeaderView setState:EGOPullRefreshNormal];
+    [self.refreshHeaderView setState:PullRefreshNormal];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_TIME];
@@ -79,7 +79,7 @@
 {
     _loading = NO;
     
-    [self.loadMoreFooterView setState:EGOPullLoadMorehNormal];
+    [self.loadMoreFooterView setState:PullLoadMorehNormal];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_TIME];
@@ -179,7 +179,7 @@
 {
     _loading = YES;
     
-    [self.loadMoreFooterView setState:EGOPullLoadMoreLoading];
+    [self.loadMoreFooterView setState:PullLoadMoreLoading];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:ANIMATION_TIME];
@@ -194,11 +194,11 @@
 - (BOOL)handleRefreshNormalAndPullingStatus
 {
     BOOL isHandle = NO;
-    if (self.refreshHeaderView.state == EGOPullRefreshPulling && self.scrollView.contentOffset.y > -OFFSET_THRESHOLD && self.scrollView.contentOffset.y < 0.0f && !self.refreshing) {
-        [self.refreshHeaderView setState:EGOPullRefreshNormal];
+    if (self.refreshHeaderView.state == PullRefreshPulling && self.scrollView.contentOffset.y > -OFFSET_THRESHOLD && self.scrollView.contentOffset.y < 0.0f && !self.refreshing) {
+        [self.refreshHeaderView setState:PullRefreshNormal];
         isHandle = YES;
-    } else if (self.refreshHeaderView.state == EGOPullRefreshNormal && self.scrollView.contentOffset.y < -OFFSET_THRESHOLD && !self.refreshing) {
-        [self.refreshHeaderView setState:EGOPullRefreshPulling];
+    } else if (self.refreshHeaderView.state == PullRefreshNormal && self.scrollView.contentOffset.y < -OFFSET_THRESHOLD && !self.refreshing) {
+        [self.refreshHeaderView setState:PullRefreshPulling];
         
         isHandle = YES;
     }
@@ -225,10 +225,10 @@
     }
     
     CGFloat offset = self.scrollView.contentOffset.y + self.scrollView.height -  self.scrollView.contentSize.height;
-    if (self.loadMoreFooterView.state == EGOPullLoadMorePulling && offset < OFFSET_THRESHOLD && self.scrollView.contentOffset.y > 0.0f && !self.loading) {
-        [self.loadMoreFooterView setState:EGOPullLoadMorehNormal];
-    } else if (self.loadMoreFooterView.state == EGOPullLoadMorehNormal && offset > OFFSET_THRESHOLD && !self.loading) {
-        [self.loadMoreFooterView setState:EGOPullLoadMorePulling];
+    if (self.loadMoreFooterView.state == PullLoadMorePulling && offset < OFFSET_THRESHOLD && self.scrollView.contentOffset.y > 0.0f && !self.loading) {
+        [self.loadMoreFooterView setState:PullLoadMorehNormal];
+    } else if (self.loadMoreFooterView.state == PullLoadMorehNormal && offset > OFFSET_THRESHOLD && !self.loading) {
+        [self.loadMoreFooterView setState:PullLoadMorePulling];
     }
     
     if (self.scrollView.contentInset.bottom != 0) {
@@ -251,11 +251,11 @@
         return;
     }
     
-	if (self.refreshHeaderView.state == EGOPullRefreshRefreshing) {
+	if (self.refreshHeaderView.state == PullRefreshRefreshing) {
         //header
         [self handleRefreshRefreshingStatus];
 	}
-    else if (self.loadMoreFooterView.state == EGOPullLoadMoreLoading) {
+    else if (self.loadMoreFooterView.state == PullLoadMoreLoading) {
         //footer
         [self handleLoadingMoreLoadingStatus];
     }

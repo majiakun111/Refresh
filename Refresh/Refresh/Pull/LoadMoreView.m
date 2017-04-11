@@ -16,7 +16,7 @@
 - (id)initWithFrame:(CGRect)frame
 {
     if ((self = [super initWithFrame:frame arrowImage:@"PullToLoadMore"])) {
-        self.state = EGOPullLoadMorehNormal;
+        self.state = PullLoadMorehNormal;
         [self.statusLabel setText:@"上拉刷新"];
         self.normalStatusText = @"上拉刷新";
         self.pullingStatusText = @"释放加载更多";

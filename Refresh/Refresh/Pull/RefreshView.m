@@ -23,7 +23,7 @@
         [self.arrowImageLayer setFrame:CGRectMake(self.arrowImageLayer.frame.origin.x, self.arrowImageLayer.frame.origin.y + self.height - CONTENT_HEIGHT, self.arrowImageLayer.frame.size.width, self.arrowImageLayer.frame.size.height)];
         [self.loadingImageView setTop:self.loadingImageView.top + self.height - CONTENT_HEIGHT];
         
-        self.state = EGOPullRefreshNormal;
+        self.state = PullRefreshNormal;
         
         [self.statusLabel setText:@"下拉刷新"];
         self.normalStatusText = @"下拉刷新";

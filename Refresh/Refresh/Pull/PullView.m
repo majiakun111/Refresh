@@ -44,12 +44,14 @@
     return self;
 }
 
-- (void)setState:(EGOPullState)state
+#pragma mark - Property
+
+- (void)setState:(PullState)state
 {
     switch (state) {
-        case EGOPullRefreshNormal:
-        case EGOPullLoadMorehNormal: {
-            if (_state == EGOPullRefreshPulling || _state == EGOPullLoadMorePulling) {
+        case PullRefreshNormal:
+        case PullLoadMorehNormal: {
+            if (_state == PullRefreshPulling || _state == PullLoadMorePulling) {
                 [CATransaction begin];
                 [CATransaction setAnimationDuration:ANIMATION_TIME];
                 _arrowImageLayer.transform = CATransform3DIdentity;
@@ -66,8 +68,8 @@
             
             break;
         }
-        case EGOPullRefreshPulling:
-        case EGOPullLoadMorePulling: {
+        case PullRefreshPulling:
+        case PullLoadMorePulling: {
             _statusLabel.text = self.pullingStatusText;
             [CATransaction begin];
             [CATransaction setAnimationDuration:ANIMATION_TIME];
@@ -76,8 +78,8 @@
             
             break;
         }
-        case EGOPullRefreshRefreshing:
-        case EGOPullLoadMoreLoading: {
+        case PullRefreshRefreshing:
+        case PullLoadMoreLoading: {
             _statusLabel.text = self.loadingStatusText;
             [self startRotationLoadingImage];
             [CATransaction begin];
